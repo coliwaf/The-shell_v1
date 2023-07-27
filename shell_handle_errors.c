@@ -1,3 +1,5 @@
+ #include "shell.h"
+
 /**
  * err_puts - prints input string
  * @str: the string to be printed
@@ -6,6 +8,15 @@
  */
 void err_puts(char *str)
 {
+	int i = 0;
+
+	if (!str)
+		return;
+	while (str[i] != '\0')
+	{
+		err_putchar(str[i]);
+		i++;
+	}
 }
 
 /**
@@ -17,6 +28,17 @@ void err_puts(char *str)
  */
 int err_putchar(char c)
 {
+	static int i;
+	static char buffr[WRITE__FULL_BUFFER_SIZE];
+
+	if (c == NEGATIVE_ONE || i >= WRITE__FULL_BUFFER_SIZE)
+	{
+		write(2, buffr, i);
+		i = 0;
+	}
+	if (c != NEGATIVE_ONE)
+		buffr[i++] = c;
+	return (1);
 }
 
 /**
@@ -29,6 +51,17 @@ int err_putchar(char c)
  */
 int put_file_descr(char c, int file_descr)
 {
+	static int i;
+	static char buffr[WRITE__FULL_BUFFER_SIZE];
+
+	if (c == NEGATIVE_ONE || i >= WRITE__FULL_BUFFER_SIZE)
+	{
+		write(file_descr, buffr, i);
+		i = 0;
+	}
+	if (c != NEGATIVE_ONE)
+		buffr[i++] = c;
+	return (1);
 }
 
 /**
@@ -40,5 +73,14 @@ int put_file_descr(char c, int file_descr)
  */
 int puts_file_descr(char *str, int file_descr)
 {
+	int i = 0;
+
+	if (!str)
+		return (0);
+	while (*str)
+	{
+		i += put_file_descr(*str++, file_descr);
+	}
+	return (i);
 }
 
