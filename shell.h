@@ -173,9 +173,9 @@ size_t _list_prnt(const list_s *);
 size_t _list_lngth(const list_s *);
 ssize_t fetch_node_idx(list_s *, list_s *);
 list_s *node_start_elem(list_s *, char *, char);
-int replace_alias(data_s *);
-int replace_string(char **, char *);
-int replace_vars(data_s *);
+int alias_change(data_s *);
+int string_change(char **, char *);
+int vars_change(data_s *);
 int is_chain(data_s *, char *, size_t *);
 void check_chain(data_s *, char *, size_t *, size_t, size_t);
 
