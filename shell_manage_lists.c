@@ -7,7 +7,7 @@
  * @num: index referenced in history
  * Return: list size
  */
-list_s *add_to-node_start(list_s **head, const char *str, int num)
+list_s *add_to_node_start(list_s **head, const char *str, int num)
 {
 	list_s *new_head;
 
@@ -80,7 +80,7 @@ list_s *add_to_node_end(list_s **head, const char *str, int num)
  * @h: first node's pointer address param
  * Return: list len
  */
-size_t prnt_list-str_elem(const list_s *h)
+size_t prnt_list_str_elem(const list_s *h)
 {
 	size_t i = 0;
 

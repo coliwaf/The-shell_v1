@@ -81,7 +81,7 @@ int change_alias(data_s *data)
 
 	for (i = 0; i < 10; i++)
 	{
-		node = node_str_start(data->alias, data->argv[0], '=');
+		node = node_start_elem(data->alias, data->argv[0], '=');
 		if (!node)
 			return (0);
 		free(data->argv[0]);

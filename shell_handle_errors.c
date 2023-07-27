@@ -29,9 +29,9 @@ void err_puts(char *str)
 int err_putchar(char c)
 {
 	static int i;
-	static char buffr[WRITE__FULL_BUFFER_SIZE];
+	static char buffr[WRITE_FULL_BUFFER_SIZE];
 
-	if (c == NEGATIVE_ONE || i >= WRITE__FULL_BUFFER_SIZE)
+	if (c == NEGATIVE_ONE || i >= WRITE_FULL_BUFFER_SIZE)
 	{
 		write(2, buffr, i);
 		i = 0;
@@ -52,9 +52,9 @@ int err_putchar(char c)
 int put_file_descr(char c, int file_descr)
 {
 	static int i;
-	static char buffr[WRITE__FULL_BUFFER_SIZE];
+	static char buffr[WRITE_FULL_BUFFER_SIZE];
 
-	if (c == NEGATIVE_ONE || i >= WRITE__FULL_BUFFER_SIZE)
+	if (c == NEGATIVE_ONE || i >= WRITE_FULL_BUFFER_SIZE)
 	{
 		write(file_descr, buffr, i);
 		i = 0;

@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  * _strcmp - compares two str char by char.
  * @s1: first string param

@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  * main_shell - programs' main shell loop
  * @data: the param & return data struct

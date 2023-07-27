@@ -80,7 +80,7 @@ void check_chain(data_s *data, char *buffr, size_t *p, size_t i, size_t len)
 {
 	size_t j = *p;
 	
-	if (data->command_buffer_kind == CMD_AND)
+	if (data->command_buffer_kind == AND_FLAG)
 	{
 		if (data->status)
 		{
@@ -89,7 +89,7 @@ void check_chain(data_s *data, char *buffr, size_t *p, size_t i, size_t len)
 		}
 	}
 	
-	if (data->command_buffer_kind == CMD_OR)
+	if (data->command_buffer_kind == OR_FLAG)
 	{
 		if (!data->status)
 		{

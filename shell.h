@@ -17,7 +17,7 @@
 #define WRITE_FULL_BUFFER_SIZE 1024
 #define CHANGE_LOWERCASE 1
 #define CHANGE_UNSIGNED 2
-#define FLAG_RED 0
+#define FLAG_REG 0
 #define OR_FLAG 1
 #define AND_FLAG 2
 #define CHAIN_FLAG 3
@@ -46,17 +46,6 @@ typedef struct ListStrct
 	char *str;
 	struct ListStrct *next;
 } list_s;
-
-/**
- * struct builtin - defines builtin string and its related function
- * @type: the builtin condition
- * @func: the accompanying func
- */
-typedef struct builtin
-{
-	char *type;
-	int (*func)(data_s *);
-} builtin_cmds;
 
 /**
  * struct infoData - struct with pseudo-arguments to pass to specific function
@@ -100,6 +89,17 @@ typedef struct infoData
 	int retrv_file_descriptor;
 	int hist_ln_count;
 } data_s;
+
+/**
+ * struct builtin - defines builtin string and its related function
+ * @type: the builtin command condition
+ * @func: the function
+ */
+typedef struct builtin
+{
+	char *type;
+	int (*func)(data_s *);
+} builtin_cmds;
 
 int main_shell(data_s *, char **);
 int select_builtin(data_s *);
@@ -150,11 +150,11 @@ void free_data(data_s *, int);
 void clear_data(data_s *);
 ssize_t get_input(data_s *);
 int _getline(data_s *, char **, size_t *);
-int my_env(data_s *);
-char *env_get(data_s *, const char *);
-int unset_my_env(data_s *);
+int prnt_env(data_s *);
+char *_getenv(data_s *, const char *);
+int unset_the_environ(data_s *);
 int create_env(data_s *);
-int set_my_env(data_s *);
+int set_the_environ(data_s *);
 int _unsetenv(data_s *, char *);
 int _setenv(data_s *, char *, char *);
 char **get_environ(data_s *);

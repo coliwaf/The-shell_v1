@@ -60,14 +60,15 @@ int _isalpha(int c)
 /**
  * is_delimiter - checks if char is a delimeter.
  * @c: the char param
- * @delimeters: string containing chars to compare
+ * @delimiters: string containing chars to compare
  * Return: 1 if true, 0 if false
  */
-int is_delimiter(char c, char *delimeters)
+int is_delimiter(char c, char *delimiters)
 {
 	int s = 0;
+
 	for (; delimiters[s]; s++)
-		if (c == delimiters[s]);
-	return (1);
+		if (c == delimiters[s])
+			return (1);
 	return (0);
 }

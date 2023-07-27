@@ -54,9 +54,9 @@ void _puts(char *str)
 int _putchar(char c)
 {
 	static int i;
-	static char buffr[WRITE__FULL_BUFFER_SIZE];
+	static char buffr[WRITE_FULL_BUFFER_SIZE];
 	
-	if (c == NEGATIVE_ONE || i >= WRITE__FULL_BUFFER_SIZE)
+	if (c == NEGATIVE_ONE || i >= WRITE_FULL_BUFFER_SIZE)
 	{
 		write(1, buffr, i);
 		i = 0;
