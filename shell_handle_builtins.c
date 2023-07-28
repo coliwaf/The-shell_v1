@@ -9,7 +9,7 @@
 int handle_exiting(data_s *data)
 {
 	int chk_exit;
-	
+
 	if (data->argv[1])
 	{
 		chk_exit = numb_atoi_err(data->argv[1]);
@@ -21,13 +21,13 @@ int handle_exiting(data_s *data)
 			err_putchar('\n');
 			return (1);
 		}
-		
+
 		data->err_code = numb_atoi_err(data->argv[1]);
 		return (-2);
 	}
-	
+
 	data->err_code = -1;
-	
+
 	return (-2);
 }
 
@@ -41,10 +41,10 @@ int handle_curr_dir(data_s *data)
 {
 	char *s, *dir, buffer[1024];
 	int chdir_ret;
-	
+
 	s = getcwd(buffer, 1024);
 	if (!s)
-		_puts("Directory does not exist");	
+		_puts("Directory does not exist");
 	if (!data->argv[1])
 	{
 		dir = _getenv(data, "HOME=");
@@ -61,13 +61,13 @@ int handle_curr_dir(data_s *data)
 			_puts(s);
 			_putchar('\n');
 			return (1);
-		}	
+		}
 		_puts(_getenv(data, "OLDPWD=")), _putchar('\n');
 		chdir_ret =
 			chdir((dir = _getenv(data, "OLDPWD=")) ? dir : "/");
 	}
 	else
-		chdir_ret = chdir(data->argv[1]);	
+		chdir_ret = chdir(data->argv[1]);
 	if (chdir_ret == -1)
 	{
 		print_error(data, "can't cd to ");
@@ -89,7 +89,7 @@ int handle_curr_dir(data_s *data)
 int handle_help(data_s *data)
 {
 	char **arg_array;
-	
+
 	arg_array = data->argv;
 	_puts("Help works! \n");
 	if (0)

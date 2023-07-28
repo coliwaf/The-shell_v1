@@ -9,21 +9,20 @@ char *_strdup(const char *str)
 {
 	int length = 0;
 	char *ret;
-	
+
+	ret = malloc(sizeof(char) * (length + 1));
 	if (str == NULL)
 		return (NULL);
-	
+
 	while (*str++)
 		length++;
-	
-	ret = malloc(sizeof(char) * (length + 1));
-	
+
 	if (!ret)
-		return (NULL);
-	
+	return (NULL);
+
 	for (length++; length--;)
-		ret[length] = *--str;
-	
+	ret[length] = *--str;
+
 	return (ret);
 }
 
@@ -34,10 +33,10 @@ char *_strdup(const char *str)
 void _puts(char *str)
 {
 	int i = 0;
-	
+
 	if (!str)
-		return;
-	
+	return;
+
 	while (str[i] != '\0')
 	{
 		_putchar(str[i]);
@@ -55,15 +54,15 @@ int _putchar(char c)
 {
 	static int i;
 	static char buffr[WRITE_FULL_BUFFER_SIZE];
-	
+
 	if (c == NEGATIVE_ONE || i >= WRITE_FULL_BUFFER_SIZE)
 	{
 		write(1, buffr, i);
 		i = 0;
 	}
-	
+
 	if (c != NEGATIVE_ONE)
 		buffr[i++] = c;
-	
+
 	return (1);
 }

@@ -10,11 +10,11 @@ int unset_alias(data_s *data, char *str)
 {
 	char *p, c;
 	int ret;
-	
+
 	p = _strchr(str, '=');
 	if (!p)
 		return (1);
-	
+
 	c = *p;
 	*p = 0;
 	ret = del_node_at_idx(&(data->alias),
@@ -33,13 +33,13 @@ int unset_alias(data_s *data, char *str)
 int set_alias(data_s *data, char *str)
 {
 	char *p;
-	
+
 	p = _strchr(str, '=');
 	if (!p)
 		return (1);
 	if (!*++p)
 		return (unset_alias(data, str));
-	
+
 	unset_alias(data, str);
 	return (add_to_node_end(&(data->alias), str, 0) == NULL);
 }
@@ -53,7 +53,7 @@ int set_alias(data_s *data, char *str)
 int print_alias(list_s *node)
 {
 	char *p = NULL, *a = NULL;
-	
+
 	if (node)
 	{
 		p = _strchr(node->str, '=');
@@ -89,12 +89,12 @@ int change_alias(data_s *data)
 		if (!p)
 			return (0);
 		p = _strdup(p + 1);
-		
+
 		if (!p)
 			return (0);
 		data->argv[0] = p;
 	}
-	
+
 	return (1);
 }
 
@@ -107,9 +107,9 @@ int handle_alias(data_s *data)
 {
 	int i = 0;
 	char *p = NULL;
-	
+
 	list_s *node = NULL;
-	
+
 	if (data->argc == 1)
 	{
 		node = data->alias;
@@ -123,7 +123,7 @@ int handle_alias(data_s *data)
 	for (i = 1; data->argv[i]; i++)
 	{
 		p = _strchr(data->argv[i], '=');
-		
+
 		if (p)
 			set_alias(data, data->argv[i]);
 		else

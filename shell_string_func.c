@@ -15,7 +15,7 @@ int _strcmp(char *s1, char *s2)
 		s1++;
 		s2++;
 	}
-	
+
 	if (*s1 == *s2)
 		return (0);
 	else
@@ -30,12 +30,13 @@ int _strcmp(char *s1, char *s2)
 int _strlen(char *s)
 {
 	int i = 0;
+
 	if (!s)
-		return (0);
-	
+	return (0);
+
 	while (*s++)
 		i++;
-	
+
 	return (i);
 }
 
@@ -48,13 +49,13 @@ int _strlen(char *s)
 char *_strcat(char *dest, char *src)
 {
 	char *ret = dest;
-	
+
 	while (*dest)
 		dest++;
-	
+
 	while (*src)
 		*dest++ = *src++;
-	
+
 	*dest = *src;
 	return (ret);
 }
@@ -68,9 +69,9 @@ char *_strcat(char *dest, char *src)
 char *str_starts_with(const char *haystack, const char *needle)
 {
 	while (*needle)
-		if (*needle++ != *haystack++)\
-			return (NULL);
-	
+	if (*needle++ != *haystack++)
+	return (NULL);
+
 	return ((char *)haystack);
 }
 
@@ -83,17 +84,17 @@ char *str_starts_with(const char *haystack, const char *needle)
 char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
-	
+
 	if (dest == src || src == 0)
 		return (dest);
-	
+
 	while (src[i])
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	
+
 	dest[i] = 0;
-	
+
 	return (dest);
 }

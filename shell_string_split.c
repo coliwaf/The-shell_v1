@@ -10,7 +10,7 @@ char **strtow(char *str, char *d)
 {
 	int i, j, k, m, word_count = 0;
 	char **s;
-	
+
 	if (str == NULL || str[0] == 0)
 		return (NULL);
 	if (!d)
@@ -23,7 +23,7 @@ char **strtow(char *str, char *d)
 	s = malloc((1 + word_count) * sizeof(char *));
 	if (!s)
 		return (NULL);
-	
+
 	for (i = 0, j = 0; j < word_count; j++)
 	{
 		while (is_delimiter(str[i], d))
@@ -57,12 +57,12 @@ char **strtow2(char *str, char d)
 {
 	int i, j, k, m, word_count = 0;
 	char **s;
-	
+
 	if (str == NULL || str[0] == 0)
 		return (NULL);
 	for (i = 0; str[i] != '\0'; i++)
-		if ((str[i] != d && !str[i + 1]) 
-				|| str[i + 1] == d || (str[i] != d && str[i + 1] == d) )
+		if ((str[i] != d && !str[i + 1])
+		|| str[i + 1] == d || (str[i] != d && str[i + 1] == d))
 			word_count++;
 	if (word_count == 0)
 		return (NULL);

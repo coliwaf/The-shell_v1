@@ -78,7 +78,7 @@ size_t _list_prnt(const list_s *h)
 
 /**
  * node_start_elem - returns node starting with provide prefix
- * @node: list head pointer 
+ * @node: list head pointe
  * @prefix: string param to match
  * @c: next char following matched prefix
  * Return: Null or matched node

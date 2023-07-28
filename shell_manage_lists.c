@@ -11,18 +11,18 @@ list_s *add_to_node_start(list_s **head, const char *str, int num)
 {
 	list_s *new_head;
 
-	if (!head)
-		return(NULL);
 	new_head = malloc(sizeof(list_s));
-	if(!new_head)
-		return(NULL);
+	if (!head)
+		return (NULL);
+	if (!new_head)
+		return (NULL);
 
 	_memset((void *)new_head, 0, sizeof(list_s));
 	new_head->num = num;
-	if(str)
+	if (str)
 	{
 		new_head->str = _strdup(str);
-		if(!new_head->str)
+		if (!new_head->str)
 		{
 			free(new_head);
 			return (NULL);

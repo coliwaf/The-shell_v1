@@ -53,7 +53,7 @@ char *fetch_cmd_in_path(data_s *data, char *pathstr, char *cmd)
 
 	if (!pathstr)
 		return (NULL);
-	
+
 	if ((_strlen(cmd) > 2) && str_starts_with(cmd, "./"))
 		if (_is_exec(data, cmd))
 			return (cmd);
@@ -78,7 +78,7 @@ char *fetch_cmd_in_path(data_s *data, char *pathstr, char *cmd)
 
 			if (!pathstr[i])
 				break;
-			
+
 			curr_pos = i;
 		}
 		i++;

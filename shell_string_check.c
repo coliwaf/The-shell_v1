@@ -10,7 +10,7 @@
 int is_chain(data_s *data, char *buffr, size_t *p)
 {
 	size_t j = *p;
-	
+
 	if (buffr[j] == '|' && buffr[j + 1] == '|')
 	{
 		buffr[j] = 0;
@@ -30,7 +30,7 @@ int is_chain(data_s *data, char *buffr, size_t *p)
 	}
 	else
 		return (0);
-	
+
 	*p = j;
 	return (1);
 }
@@ -46,20 +46,20 @@ int alias_change(data_s *data)
 	int i;
 	list_s *node;
 	char *p;
-	
+
 	for (i = 0; i < 10; i++)
 	{
 		node = node_start_elem(data->alias, data->argv[0], '=');
 		if (!node)
 			return (0);
-		
+
 		free(data->argv[0]);
-		
+
 		p = _strchr(node->str, '=');
-		
+
 		if (!p)
 			return (0);
-		
+
 		p = _strdup(p + 1);
 		if (!p)
 			return (0);
@@ -79,7 +79,7 @@ int alias_change(data_s *data)
 void check_chain(data_s *data, char *buffr, size_t *p, size_t i, size_t len)
 {
 	size_t j = *p;
-	
+
 	if (data->command_buffer_kind == AND_FLAG)
 	{
 		if (data->status)
@@ -88,7 +88,7 @@ void check_chain(data_s *data, char *buffr, size_t *p, size_t i, size_t len)
 			j = len;
 		}
 	}
-	
+
 	if (data->command_buffer_kind == OR_FLAG)
 	{
 		if (!data->status)
@@ -97,7 +97,7 @@ void check_chain(data_s *data, char *buffr, size_t *p, size_t i, size_t len)
 			j = len;
 		}
 	}
-	
+
 	*p = j;
 }
 
@@ -129,18 +129,18 @@ int vars_change(data_s *data)
 	{
 		if (data->argv[i][0] != '$' || !data->argv[i][1])
 			continue;
-		
+
 		if (!_strcmp(data->argv[i], "$?"))
 		{
 			string_change(&(data->argv[i]),
-					_strdup( convert_numb_base(data->status, 10, 0)));
+			_strdup(convert_numb_base(data->status, 10, 0)));
 			continue;
 		}
-		
+
 		if (!_strcmp(data->argv[i], "$$"))
 		{
 			string_change(&(data->argv[i]),
-					_strdup( convert_numb_base(getpid(), 10, 0)));
+			_strdup(convert_numb_base(getpid(), 10, 0)));
 			continue;
 		}
 		node = node_start_elem(data->env, &data->argv[i][1], '=');
@@ -151,8 +151,8 @@ int vars_change(data_s *data)
 			continue;
 		}
 		string_change(&data->argv[i], _strdup(""));
-		
+
 	}
-	
+
 	return (0);
 }

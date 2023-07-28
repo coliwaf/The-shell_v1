@@ -10,13 +10,13 @@ int main_shell(data_s *data, char **argv)
 {
 	ssize_t res = 0;
 	int builtin_ret = 0;
-	
+
 	while (res != -1 && builtin_ret != -2)
 	{
 		clear_data(data);
 		if (active_terminal(data))
 			_puts("$ ");
-		
+
 		err_putchar(NEGATIVE_ONE);
 		res = get_input(data);
 		if (res != -1)
@@ -28,22 +28,22 @@ int main_shell(data_s *data, char **argv)
 		}
 		else if (active_terminal(data))
 			_putchar('\n');
-		
+
 		free_data(data, 0);
 	}
-	
+
 	create_update_history(data);
 	free_data(data, 1);
 	if (!active_terminal(data) && data->status)
 		exit(data->status);
-	
+
 	if (builtin_ret == -2)
 	{
 		if (data->err_code == -1)
 			exit(data->status);
 		exit(data->err_code);
 	}
-	
+
 	return (builtin_ret);
 }
 
@@ -70,7 +70,7 @@ int select_builtin(data_s *data)
 		{"unsetenv", unset_the_environ},
 		{NULL, NULL}
 	};
-	
+
 	for (i = 0; builtin_lst[i].type; i++)
 		if (_strcmp(data->argv[0], builtin_lst[i].type) == 0)
 		{
@@ -78,7 +78,7 @@ int select_builtin(data_s *data)
 			builtin_result = builtin_lst[i].func(data);
 			break;
 		}
-	
+
 	return (builtin_result);
 }
 
@@ -90,21 +90,21 @@ void fetch_command(data_s *data)
 {
 	char *path = NULL;
 	int i, j;
-	
+
 	data->path = data->argv[0];
 	if (data->ln_count_flag == 1)
 	{
 		data->ln_count++;
 		data->ln_count_flag = 0;
 	}
-	
+
 	for (i = 0, j = 0; data->arg[i]; i++)
 		if (!is_delimiter(data->arg[i], " \t\n"))
 			j++;
 
 	if (!j)
 		return;
-	
+
 	path = fetch_cmd_in_path(data, _getenv(data, "PATH="), data->argv[0]);
 	if (path)
 	{
@@ -131,14 +131,15 @@ void fetch_command(data_s *data)
 void process_fork(data_s *data)
 {
 	pid_t child_pid;
+
 	child_pid = fork();
-	
+
 	if (child_pid == -1)
 	{
 		perror("Error:");
 		return;
 	}
-	
+
 	if (child_pid == 0)
 	{
 		if (execve(data->path, data->argv, get_environ(data)) == -1)
