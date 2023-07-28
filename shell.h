@@ -137,7 +137,7 @@ int _atoi(char *);
 int numb_atoi_err(char *);
 void print_error(data_s *, char *);
 int print_d(int, int);
-char * convert_numb_base(long int, int, int);
+char *convert_numb_base(long int, int, int);
 void convert_comments(char *);
 int handle_exiting(data_s *);
 int handle_curr_dir(data_s *);
