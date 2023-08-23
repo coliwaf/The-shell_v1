@@ -7,21 +7,21 @@
  */
 char *_strdup(const char *str)
 {
-	int length = 0;
+	unsigned int length = 0;
 	char *ret;
 
-	ret = malloc(sizeof(char) * (length + 1));
 	if (str == NULL)
 		return (NULL);
 
 	while (*str++)
 		length++;
+	ret = malloc(sizeof(char) * (length + 1));
 
 	if (!ret)
-	return (NULL);
+		return (NULL);
 
 	for (length++; length--;)
-	ret[length] = *--str;
+		ret[length] = *--str;
 
 	return (ret);
 }
@@ -35,7 +35,7 @@ void _puts(char *str)
 	int i = 0;
 
 	if (!str)
-	return;
+		return;
 
 	while (str[i] != '\0')
 	{
